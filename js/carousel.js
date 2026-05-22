@@ -8,7 +8,9 @@ let carouselArr = [];
 
 //class Carousel
 class Carousel {
-
+    constructor(){
+        
+    }
     
       
     static Start(arr){
@@ -17,7 +19,7 @@ class Carousel {
             if(arr.length > 0){
                 Carousel._sequence = 0;
                 Carousel._size = arr.length;
-                Carousel.Next(); //start
+                Carousel.Next(0); //start
                 Carousel._interval = setInterval(function(){ Carousel.Next(); },5000);
             }
             
@@ -26,7 +28,5 @@ class Carousel {
         }
     }
 
-    static Next(){
-        
-    }
+    
 };
