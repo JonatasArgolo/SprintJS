@@ -21,12 +21,14 @@ function Post(form) {
         form.elements.namedItem("telefone").value,
         form.elements.namedItem("contato").value);
 
-    Enviar(data);
+    Enviar(data, form);
 
 }
 
-function Enviar(consol) {
+function Enviar(consol, form) {
     
+
+
     document.addEventListener("submit", (e) => {
         e.preventDefault();
         var nome = document.getElementById("nomeid");
@@ -34,9 +36,7 @@ function Enviar(consol) {
         if (nome.value != "") {
             alert('Obrigado sr(a) ' + nome.value + ' os seus dados foram encaminhados com sucesso');
         }
-        console.log(consol)
-
+        console.log(consol);
+        form.reset();
     }, {once: true});
-
-
 }
