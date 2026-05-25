@@ -31,9 +31,13 @@ class Carousel {
         let title = document.getElementById("carousel-title");
 
         let info = carouselArr[Carousel._sequence];
-        title.style.color = "white";
-        img.innerHTML = `<a href="${info._path}"><img src="img/${info._image}" alt=""></a>`;
+        title.style.color = "#000000";
+        img.innerHTML = `
+        <button id=prev_b><</button>
+        <a href="${info._path}"><img src="img/${info._image}" alt=""></a>
+        <button id=next_b>></button>`;
         title.innerHTML = `<h2>${info.text}</h2>`;
+        Carousel.buttons();
 
      }
     static Next(){
@@ -42,6 +46,20 @@ class Carousel {
             Carousel._sequence = 0;
         }
 
-        this.renderizar();
+        Carousel.renderizar();
+    }
+
+    static Previous(){
+        Carousel._sequence--;
+        if(Carousel._sequence < 0){
+            Carousel._sequence = Carousel._size - 1;
+        }
+
+        Carousel.renderizar();
+    }
+
+    static buttons(){
+        document.getElementById("prev_b").addEventListener("click", Carousel.Previous);
+        document.getElementById("next_b").addEventListener("click", Carousel.Next);
     }
 };
