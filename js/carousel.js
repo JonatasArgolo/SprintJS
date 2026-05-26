@@ -1,3 +1,4 @@
+
 //carousel
 
 //Array storage class
@@ -18,14 +19,13 @@ class Carousel {
                 Carousel._sequence = 0;
                 Carousel._size = arr.length;
                 Carousel.renderizar(); //start
-                Carousel._interval = setInterval(function(){ Carousel.Next(); },5000);
+                Carousel._interval = setInterval(function(){ Carousel.Next(); },2000);
             }
             
         } else {
             throw "Method Start need a Array Variable.";
         }
     }
-
      static renderizar(){
         let img = document.getElementById("carousel");
         let title = document.getElementById("carousel-title");
@@ -37,7 +37,7 @@ class Carousel {
         <a href="${info._path}"><img src="img/${info._image}" alt=""></a>
         <button id=next_b>></button>`;
         title.innerHTML = `<h2>${info.text}</h2>`;
-        Carousel.butao();
+        Carousel.buttons();
 
      }
     static Next(){
@@ -58,15 +58,15 @@ class Carousel {
         Carousel.renderizar();
     }
 
-    static butao(){
+    static buttons(){
         document.getElementById("prev_b").addEventListener("click", () => {
             clearInterval(Carousel._interval);
-            this().Previous();
+            this.Previous();
             Carousel._interval = setInterval(function(){ Carousel.Next(); },5000);
-        })
+        });
         document.getElementById("next_b").addEventListener("click", () => {
             clearInterval(Carousel._interval);
-            this().Next();
+            this.Next();
             Carousel._interval = setInterval(function(){ Carousel.Next(); },5000);
         });
     }
